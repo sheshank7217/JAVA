@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class TriangleType {
+
+    // Method to check if the lengths form a valid triangle
+    public static boolean isValidTriangle(int side1, int side2, int side3) {
+        return (side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1);
+    }
+
+    // Method to determine the type of triangle
+    public static String determineTriangleType(int side1, int side2, int side3) {
+        if (side1 == side2 && side2 == side3) {
+            return "Equilateral";
+        } else if (side1 == side2 || side1 == side3 || side2 == side3) {
+            return "Isosceles";
+        } else {
+            return "Scalene";
+        }
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        // Create a Scanner object to read input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter the lengths of the sides of the triangle
+        System.out.print("Enter the length of side 1: ");
+        int side1 = scanner.nextInt();
+
+        System.out.print("Enter the length of side 2: ");
+        int side2 = scanner.nextInt();
+
+        System.out.print("Enter the length of side 3: ");
+        int side3 = scanner.nextInt();
+
+        // Check if the lengths form a valid triangle
+        if (!isValidTriangle(side1, side2, side3)) {
+            System.out.println("The given lengths do not form a valid triangle.");
+        } else {
+            // Determine the type of triangle
+            String triangleType = determineTriangleType(side1, side2, side3);
+            System.out.println("The triangle is " + triangleType + ".");
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
+}
