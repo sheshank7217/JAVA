@@ -1,0 +1,46 @@
+public class Calculator {
+
+    public static double calculate(double operand1, double operand2, String operator) {
+        double result = 0;
+        switch (operator) {
+            case "+":
+                result = operand1 + operand2;
+                break;
+            case "-":
+                result = operand1 - operand2;
+                break;
+            case "*":
+                result = operand1 * operand2;
+                break;
+            case "/":
+                if (operand2 == 0) {
+                    throw new IllegalArgumentException("Division by zero is not allowed.");
+                }
+                result = operand1 / operand2;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid operator: " + operator);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        if (args.length != 3) {
+            System.out.println("Usage: java Calculator <operand1> <operator> <operand2>");
+            return;
+        }
+
+        try {
+            double operand1 = Double.parseDouble(args[0]);
+            String operator = args[1];
+            double operand2 = Double.parseDouble(args[2]);
+
+            double result = calculate(operand1, operand2, operator);
+
+            System.out.println("Result: " + result);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid operands or operator. Please provide valid numeric operands and a valid operator (+, -, *, /).");
+        }
+    }
+}
