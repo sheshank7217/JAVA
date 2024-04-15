@@ -1,0 +1,43 @@
+import java.security.SecureRandom;
+
+public class PasswordGenerator {
+
+    private static final String UPPERCASE_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String LOWERCASE_LETTERS = "abcdefghijklmnopqrstuvwxyz";
+    private static final String NUMBERS = "0123456789";
+    private static final String SPECIAL_CHARACTERS = "!@#$%^&*()-_+=<>?";
+
+    public static String generatePassword(int length) {
+        StringBuilder characterPool = new StringBuilder();
+
+        characterPool.append(UPPERCASE_LETTERS);
+        characterPool.append(LOWERCASE_LETTERS);
+        characterPool.append(NUMBERS);
+        characterPool.append(SPECIAL_CHARACTERS);
+
+        if (characterPool.length() == 0) {
+            throw new IllegalArgumentException("At least one character set must be specified.");
+        }
+
+        SecureRandom random = new SecureRandom();
+        StringBuilder password = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(characterPool.length());
+            char randomChar = characterPool.charAt(randomIndex);
+            password.append(randomChar);
+        }
+
+        return password.toString();
+    }
+
+    public static void main(String[] args) {
+        try {
+            int passwordLength = 10; // Set your desired password length
+            String generatedPassword = generatePassword(passwordLength);
+            System.out.println("Generated Password: " + generatedPassword);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
