@@ -1,0 +1,38 @@
+public class FactorialRecursion {
+
+    // Recursive method to calculate factorial
+    public static long factorial(int n) {
+        // Base case: 0! = 1
+        if (n == 0) {
+            return 1;
+        }
+        // Recursive case: n! = n * (n - 1)!
+        return n * factorial(n - 1);
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        int num = 10; // Number to calculate the factorial for
+        System.out.println("Factorial of " + num + " using recursion: " + factorial(num));
+    }
+}
+2. Factorial using Iteration:
+In this approach, the factorial of a number n is calculated using a loop. The loop runs from 1 to n, multiplying each number by the current result.
+
+public class FactorialIteration {
+
+    // Iterative method to calculate factorial
+    public static long factorial(int n) {
+        long result = 1;
+        for (int i = 1; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        int num = 10; // Number to calculate the factorial for
+        System.out.println("Factorial of " + num + " using iteration: " + factorial(num));
+    }
+}
