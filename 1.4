@@ -1,0 +1,39 @@
+public class PrimeFactors {
+
+    // Method to find and print prime factors of a given number
+    public static void printPrimeFactors(int number) {
+        // Store the original number for display purposes
+        int originalNumber = number;
+        System.out.print("Prime factors of " + originalNumber + ": ");
+
+        // Start with the smallest prime factor, which is 2
+        int factor = 2;
+
+        // Iterate through possible factors up to the square root of the number
+        while (factor * factor <= number) {
+            // Check if the current factor divides the number exactly
+            while (number % factor == 0) {
+                System.out.print(factor + " ");
+                number /= factor; // Divide the number by the factor
+            }
+            factor++; // Move to the next potential factor
+        }
+
+        // If the remaining number is greater than 1, it is a prime factor
+        if (number > 1) {
+            System.out.print(number);
+        }
+
+        // Print a newline for readability
+        System.out.println();
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        // Define the number for which to find prime factors
+        int num = 56;
+
+        // Print prime factors of the number
+        printPrimeFactors(num);
+    }
+}
